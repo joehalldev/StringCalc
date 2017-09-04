@@ -1,14 +1,10 @@
-C:\Temp\StringCalc\src\main\java\org\sc\parser\StringParserImplTest.java
 C:\Temp\StringCalc\src\main\java\org\sc\parser\StringParser.java
-C:\Temp\StringCalc\src\main\java\org\sc\tokenizer\ExpressionTokenizerImplTest.java
+C:\Temp\StringCalc\src\main\java\org\sc\tokenizer\ExpressionTokenizerImpl.java
 C:\Temp\StringCalc\src\main\java\org\sc\parser\CalcNode.java
 C:\Temp\StringCalc\src\main\java\org\sc\parser\StringParserImpl.java
 C:\Temp\StringCalc\src\main\java\org\sc\parser\validator\ExpressionValidatorImpl.java
-C:\Temp\StringCalc\src\main\java\org\sc\StringCalc.java
-C:\Temp\StringCalc\src\main\java\org\sc\tokenizer\ExpressionTokenizerImpl.java
-C:\Temp\StringCalc\src\main\java\org\sc\StringCalculatorTest.java
 C:\Temp\StringCalc\src\main\java\org\sc\parser\Operator.java
 C:\Temp\StringCalc\src\main\java\org\sc\parser\validator\ExpressionValidator.java
 C:\Temp\StringCalc\src\main\java\org\sc\parser\validator\InvalidExpressionException.java
-C:\Temp\StringCalc\src\main\java\org\sc\parser\validator\ExpressionValidatorDefaultTest.java
+C:\Temp\StringCalc\src\main\java\org\sc\StringCalc.java
 C:\Temp\StringCalc\src\main\java\org\sc\tokenizer\ExpressionTokenizer.java

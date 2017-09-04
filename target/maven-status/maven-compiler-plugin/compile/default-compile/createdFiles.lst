@@ -1,14 +1,10 @@
+org\sc\parser\Operator.class
+org\sc\parser\validator\ExpressionValidatorImpl.class
 org\sc\parser\StringParser.class
 org\sc\parser\validator\ExpressionValidator.class
 org\sc\StringCalc.class
-org\sc\parser\validator\ExpressionValidatorDefaultTest.class
+org\sc\tokenizer\ExpressionTokenizer.class
 org\sc\parser\validator\InvalidExpressionException.class
 org\sc\parser\CalcNode.class
 org\sc\tokenizer\ExpressionTokenizerImpl.class
-org\sc\parser\StringParserImplTest.class
-org\sc\parser\Operator.class
-org\sc\parser\validator\ExpressionValidatorImpl.class
-org\sc\tokenizer\ExpressionTokenizer.class
-org\sc\StringCalculatorTest.class
-org\sc\tokenizer\ExpressionTokenizerImplTest.class
 org\sc\parser\StringParserImpl.class
