@@ -17,18 +17,18 @@ import org.sc.tokenizer.ExpressionTokenizer;
  */
 class StringParserImpl implements StringParser {
 
-	HashMap<Character, Operator> operators = new HashMap<>();
+	HashMap<String, Operator> operators = new HashMap<>();
 	private ExpressionTokenizer tokenizer;
 	private ExpressionValidator validator;
 
 	public StringParserImpl(ExpressionTokenizer tokenizer, ExpressionValidator validator) {
 		this.tokenizer = tokenizer;
 		this.validator = validator;
-		operators.put('^', new Operator('^', 3, true));
-		operators.put('*', new Operator('*', 2, false));
-		operators.put('/', new Operator('/', 2, false));
-		operators.put('+', new Operator('+', 1, false));
-		operators.put('-', new Operator('-', 1, false));
+		operators.put("^", new Operator('^', 3, true));
+		operators.put("*", new Operator('*', 2, false));
+		operators.put("/", new Operator('/', 2, false));
+		operators.put("+", new Operator('+', 1, false));
+		operators.put("-", new Operator('-', 1, false));
 	}
 
 	/* (non-Javadoc)

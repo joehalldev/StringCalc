@@ -40,7 +40,7 @@ public class StringCalc {
 			return;
 		}
 		DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
-		df.setMaximumFractionDigits(15); //340 = DecimalFormat.DOUBLE_FRACTION_DIGITS
+		df.setMaximumFractionDigits(15); 
 
 		System.out.println(df.format(answer));
 	}
