@@ -8,6 +8,7 @@ import org.sc.parser.validator.InvalidExpressionException;
 
 /**
  * Basic implementation class for the ExpressionTokenizer interface.
+ *
  * @author Joe Hall
  */
 public class ExpressionTokenizerImpl implements ExpressionTokenizer {
@@ -22,17 +23,20 @@ public class ExpressionTokenizerImpl implements ExpressionTokenizer {
 		String currentNumber = "";
 		ArrayList<String> al = new ArrayList<>();
 		for (char c : exAr) {
-			if (validator.isNumber(c))
+			if (validator.isNumber(c)) {
 				currentNumber += c;
-			else {
-				al.add(currentNumber);
+			} else {
+				if (!currentNumber.equals("")) {
+					al.add(currentNumber);
+				}
 				al.add(String.valueOf(c));
 				currentNumber = "";
 			}
 		}
-		if(currentNumber != null && !currentNumber.equals(""))
+		if (currentNumber != null && !currentNumber.equals("")) {
 			al.add(currentNumber);
-		if(!validator.validExpression(al)) {
+		}
+		if (!validator.validExpression(al)) {
 			throw new InvalidExpressionException("Invalid format for expression.");
 		}
 		return al;
