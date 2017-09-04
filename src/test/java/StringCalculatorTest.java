@@ -1,5 +1,4 @@
 
-
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
@@ -26,12 +25,13 @@ public class StringCalculatorTest {
 		validateAnswer("3 * (4+4)", 24);
 		try {
 			validateAnswer("2 * 2 / (2 - 2)", Double.POSITIVE_INFINITY);
-		} catch(ArithmeticException ae) {
+		} catch (ArithmeticException ae) {
 			System.out.println("Divide by 0");
 		}
 		validateAnswer("20 * 2", 40);
-		validateAnswer("3.14 + 2", 5.14); 
+		validateAnswer("3.14 + 2", 5.14);
 		validateAnswer("3 ^ 2", 9);
+		//validateAnswer("a * b", 9);
 	}
 
 	private void validateAnswer(String expression, double expectedAnswer) throws InvalidExpressionException {

@@ -80,10 +80,18 @@ public class ExpressionValidatorImpl implements ExpressionValidator {
 				lastNumber = true;
 			else if (isOp && lastNumber)
 				lastNumber = false;
-			else if(lastNumber && isNo)
+			else if(lastNumber && isNo) {
 				returnVal = false;
-			else if(!lastNumber && isOp)
+				break;
+			}
+			else if(!lastNumber && isOp) {
 				returnVal = false;
+				break;
+			}
+			else if(!isNo && !isOp) {
+				returnVal = false;
+				break;
+			}
 		}
 		if(leftParen != rightParen)
 			returnVal = false;
