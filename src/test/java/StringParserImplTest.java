@@ -1,17 +1,13 @@
-
-
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.sc.parser.CalcNode;
 import org.sc.parser.StringParser;
-import org.sc.parser.StringParserImpl;
-import org.sc.parser.validator.ExpressionValidatorImpl;
+import org.sc.parser.StringParserFactory;
 import org.sc.parser.validator.InvalidExpressionException;
-import org.sc.tokenizer.ExpressionTokenizerImpl;
 
 public class StringParserImplTest {
 	
-	private StringParser sp = new StringParserImpl(new ExpressionTokenizerImpl(), new ExpressionValidatorImpl());
+	private StringParser sp = StringParserFactory.getDefaultStringParser();
 
 	@Test
 	public void testParse() throws InvalidExpressionException {

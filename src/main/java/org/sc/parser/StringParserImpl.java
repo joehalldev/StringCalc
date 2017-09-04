@@ -9,10 +9,13 @@ import org.sc.parser.validator.InvalidExpressionException;
 import org.sc.tokenizer.ExpressionTokenizer;
 
 /**
- *
- * @author Joe Hall Shunting yard algorithm https://en.wikipedia.org/wiki/Shunting-yard_algorithm Parse string into a abstract tree of nodes
+ * Class for Parsing the expression into a tree of nodes (CalcNode)
+ * @author Joe Hall 
+ * Shunting yard algorithm 
+ * https://en.wikipedia.org/wiki/Shunting-yard_algorithm 
+ * Parse string into a abstract tree of nodes
  */
-public class StringParserImpl implements StringParser {
+class StringParserImpl implements StringParser {
 
 	HashMap<Character, Operator> operators = new HashMap<>();
 	private ExpressionTokenizer tokenizer;
@@ -37,11 +40,11 @@ public class StringParserImpl implements StringParser {
 		Stack<CalcNode> calcStack = new Stack<>();
 		//char[] expAr = expression.toCharArray();
 		List<String> expAr = this.tokenizer.getTokenizedList(expression, this.validator);
-		for (String c : expAr) {
+		for (String expressionElement : expAr) {
 			String poppedOp;
-			if (c.equals("(")) {
-				operatorStack.push(c);
-			} else if (c.equals(")")) {
+			if (expressionElement.equals("(")) {
+				operatorStack.push(expressionElement);
+			} else if (expressionElement.equals(")")) {
 				while (!operatorStack.isEmpty()) {
 					poppedOp = operatorStack.pop();
 					if ("(".equals(poppedOp)) {
@@ -50,8 +53,8 @@ public class StringParserImpl implements StringParser {
 						addNode(calcStack, poppedOp);
 					}
 				}
-			} else if (this.validator.isOperator(c)) {
-				final Operator o1 = operators.get(c);
+			} else if (this.validator.isOperator(expressionElement)) {
+				final Operator o1 = operators.get(expressionElement);
 				Operator o2;
 				while (!operatorStack.isEmpty() && null != (o2 = operators.get(operatorStack.peek()))) {
 					if ((!o1.isRight() && 0 == o1.compare(o2)) || o1.compare(o2) < 0) {
@@ -61,9 +64,9 @@ public class StringParserImpl implements StringParser {
 						break;
 					}
 				}
-				operatorStack.push(c);
-			} else if (this.validator.isNumber(c)) {
-				calcStack.push(new CalcNode(c, null, null));
+				operatorStack.push(expressionElement);
+			} else if (this.validator.isNumber(expressionElement)) {
+				calcStack.push(new CalcNode(expressionElement, null, null));
 			}
 			// ignore other characters
 		}

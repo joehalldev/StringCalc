@@ -36,9 +36,7 @@ public class ExpressionTokenizerImpl implements ExpressionTokenizer {
 		if (currentNumber != null && !currentNumber.equals("")) {
 			al.add(currentNumber);
 		}
-		if (!validator.validExpression(al)) {
-			throw new InvalidExpressionException("Invalid format for expression.");
-		}
+		validator.validateExpression(al);
 		return al;
 	}
 }

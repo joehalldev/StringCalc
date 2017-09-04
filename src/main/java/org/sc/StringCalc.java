@@ -4,12 +4,8 @@ import java.math.BigDecimal;
 
 import org.sc.parser.CalcNode;
 import org.sc.parser.StringParser;
-import org.sc.parser.StringParserImpl;
-import org.sc.parser.validator.ExpressionValidator;
-import org.sc.parser.validator.ExpressionValidatorImpl;
+import org.sc.parser.StringParserFactory;
 import org.sc.parser.validator.InvalidExpressionException;
-import org.sc.tokenizer.ExpressionTokenizer;
-import org.sc.tokenizer.ExpressionTokenizerImpl;
 
 /**
  * Main Class - Calculates the result of an expression string.
@@ -23,10 +19,7 @@ public class StringCalc {
 			System.out.println("Usage: java -jar StringCalc.jar \"Expression\"\nExample: java -jar StringCalc.jar \"2 + 2\"");
 			return;
 		}
-		StringCalc sc = new StringCalc();
-		ExpressionTokenizer tokenizer = new ExpressionTokenizerImpl(); // Note: I was going to use a factory but Dependency Injection is preferred over the Abstract Factory pattern.
-		ExpressionValidator validator = new ExpressionValidatorImpl(); // Inject into the parser.
-		StringParser parser = new StringParserImpl(tokenizer, validator);
+		StringParser parser = StringParserFactory.getDefaultStringParser();
 		CalcNode tree;
 		try {
 			tree = parser.parse(args[0]);
@@ -36,6 +29,7 @@ public class StringCalc {
 		}
 		BigDecimal answer;
 		try {
+			StringCalc sc = new StringCalc();
 			answer = sc.evaluateTree(tree).stripTrailingZeros();
 		} catch (ArithmeticException ae) {
 			System.err.println("Divide by 0 is not allowed.");

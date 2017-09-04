@@ -20,6 +20,6 @@ public interface ExpressionValidator {
 	 * Validate the express to verify it is Number Operator Number, etc...
 	 * @param expression - The Expression string...
 	 */
-	public boolean validExpression(List<String> expression);
+	public void validateExpression(List<String> expression) throws InvalidExpressionException;
 
 }

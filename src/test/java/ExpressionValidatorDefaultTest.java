@@ -1,5 +1,3 @@
-
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -9,6 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 import org.sc.parser.validator.ExpressionValidatorImpl;
+import org.sc.parser.validator.InvalidExpressionException;
 
 public class ExpressionValidatorDefaultTest {
 	
@@ -69,15 +68,22 @@ public class ExpressionValidatorDefaultTest {
 	}
 
 	@Test
-	public void testValidExpression() {
+	public void testValidExpression() throws InvalidExpressionException {
 		ExpressionValidatorImpl v = new ExpressionValidatorImpl();
 		List<String> al = new ArrayList<>();
 		al.add("3");
 		al.add("+");
 		al.add("4");
-		assertTrue(v.validExpression(al));
-		assertTrue(v.validExpression(Arrays.asList(new String[]{"3","+","4","*","2","-","1","/","4"})));
-		assertFalse(v.validExpression(Arrays.asList(new String[]{"3","3","4","*","2","-","1","/","4"})));
+		v.validateExpression(al);
+		v.validateExpression(Arrays.asList(new String[]{"3","+","4","*","2","-","1","/","4"}));
+		v.validateExpression(Arrays.asList(new String[]{"3","+","(","4","+","2",")"}));
+		boolean testInvalid = false;
+		try {
+			v.validateExpression(Arrays.asList(new String[]{"3","3","4","*","2","-","1","/","4"})); 
+		} catch(InvalidExpressionException iee) {
+			testInvalid = true;
+		}
+		assertTrue(testInvalid);
 	}
 
 }
