@@ -1,6 +1,10 @@
 package org.sc;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 import org.sc.parser.CalcNode;
 import org.sc.parser.StringParser;
@@ -35,7 +39,10 @@ public class StringCalc {
 			System.err.println("Divide by 0 is not allowed.");
 			return;
 		}
-		System.out.println(answer.stripTrailingZeros());
+		DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
+		df.setMaximumFractionDigits(15); //340 = DecimalFormat.DOUBLE_FRACTION_DIGITS
+
+		System.out.println(df.format(answer));
 	}
 
 	/**
@@ -50,7 +57,7 @@ public class StringCalc {
             case "*":
                 return evaluateTree(tree.getLeftNode()).multiply(evaluateTree(tree.getRightNode()));
             case "/":
-                return evaluateTree(tree.getLeftNode()).divide(evaluateTree(tree.getRightNode())); 
+                return evaluateTree(tree.getLeftNode()).divide(evaluateTree(tree.getRightNode()), 15, RoundingMode.HALF_UP); 
             case "+":
                 return evaluateTree(tree.getLeftNode()).add(evaluateTree(tree.getRightNode()));
             case "-":

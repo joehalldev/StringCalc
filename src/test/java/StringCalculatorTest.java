@@ -20,6 +20,7 @@ public class StringCalculatorTest {
 		validateAnswer("3 + 2 * 5", 13);
 		validateAnswer("3 * 3 / 2", 4.5);
 		validateAnswer("3 * (4+4)", 24);
+		validateAnswer("3 / 7", 0.428571428571429);
 		try {
 			validateAnswer("2 * 2 / (2 - 2)", Double.POSITIVE_INFINITY);
 		} catch (ArithmeticException ae) {
